@@ -1,0 +1,34 @@
+{% extends 'common.html' %}
+
+{% block head %}
+<title>Registration form</title>
+{% endblock %}
+
+
+{% block content %}
+<div class="container " style=" float:center; text-align: center">
+    <h1>Registeration page</h1>
+    <br>    
+    <div >
+    <form method="POST" action="{% url 'register' %}">
+        {% csrf_token %}
+        
+        {% if form.error %}
+        <p> there error</p>
+        {% endif %}
+        <h4>
+        <p>Username  :{{ form.username }}</p>
+        <p>First_name:{{ form.first_name }}</p>
+        <p>Last_name :{{ form.last_name }}</p>
+        <p>Email     :{{ form.email }}</p>
+        <p>Password  :{{ form.password1}}</p>
+        <p>confirm Password:{{ form.password2}}</p>
+        
+
+        </h4>
+
+        <input type="submit" value="Register">
+    </form>
+    </div>  
+</div>
+{% endblock %}

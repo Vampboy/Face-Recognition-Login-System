@@ -1,0 +1,50 @@
+{% extends 'common.html' %}
+{% load static %}
+
+{% block head %}
+<title>Login</title>
+{% endblock %}
+
+
+  {% block content %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+  <div style="padding:10%;text-align:center; width:auto; height:100%;">
+    <h2>Face Recognition Authentication</h2>
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+  </div>
+  <div id="id01" class="modal">
+    
+    <form class="modal-content animate" action="{% url 'base' %}" method="POST">
+      <div class="imgcontainer">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <img src="{% static 'images/facebook-blank-face-blank.jpeg' %}" alt="Avatar" class="avatar">
+      </div>
+
+      <div class="container">
+        {% csrf_token %}
+        <div class="content">
+        <label for="uname"><b>Username</b></label>
+        <br>
+        <div style="width:100%;">{{MyLoginForm.email}} </div>
+        <br>
+        <label ><b>Password</b></label>
+        <br>
+        {{MyLoginForm.password}}
+        </div>  
+        <button type="submit" >Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>  
+      </div>
+
+      <div class="container">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    </form>
+  </div>
+
+  <script src="{% static 'js/script.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,21 @@
+
+{% extends 'common.html' %}
+{% load static %}
+
+{% block head %}
+<title>Home</title>
+{% endblock %}
+
+
+  {% block content %}
+
+    <div style="text-align:center">  
+
+       {% if user.is_authenticated %}
+        <p ><h1>welcome : {{ user.username }}</h1></p>
+        {% else %}
+        <p ><h1>unauthorised access</h1></p>
+        {% endif %}
+    </div>
+
+{% endblock %} 
